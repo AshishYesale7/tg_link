@@ -21,7 +21,7 @@ from telethon import functions
 
 from .telegram import client, transfer
 from .web_routes import routes
-from .config import host, port, public_url, tg_bot_token
+from .config import host, port, public_url
 from .log import log
 
 server = web.Application()
@@ -32,7 +32,7 @@ loop = asyncio.get_event_loop()
 
 
 async def start() -> None:
-    await client.start(bot_token=tg_bot_token)
+    await client.start()
 
     config = await client(functions.help.GetConfigRequest())
     for option in config.dc_options:
